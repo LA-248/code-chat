@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="frontend/main.js" defer></script>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="main-heading">Code Q&A</div>
+
+      <div class="language-selection-cards">
+        <div class="card" data-language="Python">Python</div>
+        <div class="card" data-language="JavaScript">JavaScript</div>
+      </div>
+
+      <form id="form" method="get">
+        <label for="ask-question"></label>
+        <div class="input-container">
+          <input type="text" id="ask-question" placeholder="Ask a question" />
+        </div>
+      </form>
+
+      <div class="answer-container">
+        <div class="answer-text-box"></div>
+      </div>
+    </div>
+  </body>
+</html>
