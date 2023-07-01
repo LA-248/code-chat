@@ -3,11 +3,14 @@ const answerBox = document.querySelector('.answer-text-box');
 const languageSelection = document.querySelector('.language-selection-cards');
 const card = document.querySelector('.card');
 
+// Global variable to store the user's programming language selection
+// Replace with a callback function
+let selection;
+
 function selectLanguage(event) {
   if (event.target.className === 'card') {
-    const selection = event.target.textContent;
+    selection = event.target.textContent;
     console.log(selection);
-    return selection;
   }
 }
 
@@ -37,7 +40,7 @@ async function getCompletion(message, language) {
         messages: [
           {
             role: 'system',
-            content: `You are a JavaScript helper chatbot who answers questions about using JavaScript.`,
+            content: `You are a ${language} helper chatbot who answers questions about using ${language}.`,
           },
           { role: 'user', content: message },
         ],
@@ -53,7 +56,6 @@ async function getCompletion(message, language) {
     mainContainer.removeChild(loadingMessage);
     const answer = data.choices[0].message.content;
     answerBox.textContent = answer;
-    document.body.removeChild(loadingMessage);
   } catch (error) {
     console.error('Error:', error.message);
   }
@@ -62,8 +64,7 @@ async function getCompletion(message, language) {
 function displayAnswer(event) {
   event.preventDefault();
   const input = document.getElementById('ask-question').value;
-  const language = selectLanguage(event);
-  getCompletion(input, language);
+  getCompletion(input, selection);
 }
 
 const form = document.getElementById('form');
