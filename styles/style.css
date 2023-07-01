@@ -18,16 +18,38 @@
   padding-top: 40px;
 }
 
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.prompt-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.input-and-answer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
 .language-selection-cards {
   display: flex;
-  gap: 10px;
+  gap: 7px;
 }
 
 .card {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
+  width: 120px;
   height: 40px;
   background-color: white;
   border: 1px solid rgb(189, 189, 189);
