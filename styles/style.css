@@ -6,7 +6,7 @@
 .main-container {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   height: 100vh;
   gap: 20px;
@@ -15,7 +15,6 @@
 .main-heading {
   font-size: 24px;
   font-weight: 600;
-  padding-top: 40px;
 }
 
 .content-wrapper {
@@ -67,7 +66,7 @@
   border: 1px solid blue;
 }
 
-#ask-question {
+#question-input {
   display: flex;
   padding: 20px;
   margin: 0px;
@@ -92,7 +91,7 @@
 
 .answer-text-box {
   font-size: 14px;
-  max-width: 500px;
+  max-width: 400px;
   text-align: left;
 }
 
