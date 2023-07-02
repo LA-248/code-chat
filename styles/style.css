@@ -44,7 +44,7 @@
   gap: 7px;
 }
 
-.card {
+.language-card {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,12 +57,12 @@
   font-size: 14px;
 }
 
-.card:hover {
+.language-card:hover {
   cursor: pointer;
   background-color: #f8f8f8;
 }
 
-.card:focus {
+.language-card:focus {
   border: 1px solid blue;
 }
 
