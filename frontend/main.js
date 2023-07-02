@@ -1,7 +1,9 @@
 const mainContainer = document.querySelector('.main-container');
 const answerBox = document.querySelector('.answer-text-box');
 const languageSelection = document.querySelector('.language-selection-cards');
-const card = document.querySelector('.card');
+const languageCard = document.querySelector('.language-card');
+const form = document.getElementById('form');
+const loadingMessage = document.createElement('p');
 
 // Global variable to store the user's programming language selection
 // Replace with a callback function
@@ -14,19 +16,18 @@ function selectLanguage(event) {
   }
 }
 
-languageSelection.addEventListener('click', (event) => {
-  selectLanguage(event);
-});
+function displayLoadingMessage() {
+  loadingMessage.className = 'loadingMessage';
+  loadingMessage.textContent =
+    'Please wait while the request is being processed...';
+  mainContainer.appendChild(loadingMessage);
+}
 
 async function getCompletion(message, language) {
   const url = 'https://api.openai.com/v1/chat/completions';
   const apiKey = '';
 
-  const loadingMessage = document.createElement('p');
-  loadingMessage.className = 'loadingMessage';
-  loadingMessage.textContent =
-    'Please wait while the request is being processed...';
-  mainContainer.appendChild(loadingMessage);
+  displayLoadingMessage();
 
   try {
     const response = await fetch(url, {
@@ -50,7 +51,6 @@ async function getCompletion(message, language) {
       }),
     });
 
-    // Handle the response
     const data = await response.json();
     console.log(data);
     mainContainer.removeChild(loadingMessage);
@@ -63,11 +63,14 @@ async function getCompletion(message, language) {
 
 function displayAnswer(event) {
   event.preventDefault();
-  const input = document.getElementById('ask-question').value;
+  const input = document.getElementById('question-input').value;
   getCompletion(input, selection);
 }
 
-const form = document.getElementById('form');
+languageSelection.addEventListener('click', (event) => {
+  selectLanguage(event);
+});
+
 form.addEventListener('submit', (event) => {
   displayAnswer(event);
 });
