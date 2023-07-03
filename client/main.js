@@ -1,4 +1,4 @@
-import {
+  import {
   selectLanguage,
   displayLoadingMessage,
   removeLoadingMessage,
@@ -47,6 +47,12 @@ async function getCompletion(message, language) {
   }
 }
 
+function displayQuestion() {
+  const questionTextBox = document.querySelector('.question-text-box');
+  const input = document.getElementById('question-input').value;
+  questionTextBox.textContent = input;
+}
+
 function displayAnswer(event) {
   event.preventDefault();
   const input = document.getElementById('question-input').value;
@@ -59,6 +65,7 @@ languageSelection.addEventListener('click', (event) => {
 
 form.addEventListener('submit', (event) => {
   displayAnswer(event);
+  displayQuestion();
   const questionInput = document.getElementById('question-input');
   questionInput.value = '';
 });

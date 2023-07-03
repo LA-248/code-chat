@@ -81,14 +81,22 @@
   font-weight: 400;
 }
 
-.answer-container {
+.response-container {
+  display: flex;
+  flex-direction: column;
   width: 600px;
   height: 500px;
   background-color: #f7f7f8;
   border: 1px solid gainsboro;
   border-radius: 5px;
   padding: 12px 16px;
+  gap: 10px;
   overflow: auto;
+}
+
+.question-text-box {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .answer-text-box {
