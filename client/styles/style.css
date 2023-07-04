@@ -25,7 +25,7 @@
   font-weight: 600;
 }
 
-.subtext {
+.main-heading-subtext {
   color: #A0A3BD;
   text-align: center;
   font-size: 14px;
@@ -55,13 +55,13 @@
   gap: 30px;
 }
 
-.language-selection-cards {
+.language-selection-buttons {
   display: flex;
   gap: 7px;
   width: 600px;
 }
 
-.language-card {
+.language-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,18 +74,18 @@
   font-size: 14px;
 }
 
-.language-card:hover {
+.language-button:hover {
   cursor: pointer;
-  background-color: #f8f8f8;
+  background-color: #fcfcfc;
 }
 
-.language-card.active {
-  border: 2px solid blue;
+.language-button.active {
+  border: 2px solid #36BFFA;
 }
 
 #question-input {
   display: flex;
-  padding: 20px;
+  padding: 16px;
   margin: 0px;
   border-radius: 5px;
   width: 600px;
@@ -95,6 +95,10 @@
   border: 1px solid rgb(189, 189, 189);
   font-size: 14px;
   font-weight: 400;
+}
+
+#question-input:focus {
+  border: 2px solid #36BFFA;
 }
 
 .response-container {
@@ -122,6 +126,7 @@
 }
 
 .loadingMessage {
+  color: #36BFFA;
   font-size: 14px;
   font-weight: 500;
   margin: 0px;
