@@ -1,5 +1,5 @@
 import {
-  selectLanguage,
+  setLanguageSelection,
   displayQuestion,
   displayLoadingMessage,
   removeLoadingMessage,
@@ -74,7 +74,7 @@ function setLanguageButtonBorder(event) {
 }
 
 languageSelection.addEventListener('click', (event) => {
-  selectLanguage(event);
+  setLanguageSelection(event);
   setLanguageButtonBorder(event);
   questionInput.disabled = false;
   questionInput.style.backgroundColor = 'white';

@@ -5,7 +5,7 @@ let selection = '';
 const mainContainer = document.querySelector('.main-container');
 const loadingMessage = document.createElement('p');
 
-function selectLanguage(event) {
+function setLanguageSelection(event) {
   const questionInput = document.getElementById('question-input');
   if (event.target.className === 'language-button') {
     selection = event.target.textContent;
@@ -29,13 +29,12 @@ function displayLoadingMessage() {
 
 function removeLoadingMessage() {
   mainContainer.removeChild(loadingMessage);
-}
+} 
 
 export {
-  selectLanguage,
+  setLanguageSelection,
   displayQuestion,
   displayLoadingMessage,
   removeLoadingMessage,
-  setLanguageButtonBorder,
   selection,
 };
