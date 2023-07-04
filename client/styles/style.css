@@ -12,9 +12,25 @@
   gap: 20px;
 }
 
+.heading-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  gap: 5px;
+}
+
 .main-heading {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
+}
+
+.subtext {
+  color: #A0A3BD;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  max-width: 500px;
 }
 
 .content-wrapper {
@@ -96,7 +112,7 @@
 
 .question-text-box {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .answer-text-box {
