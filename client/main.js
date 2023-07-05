@@ -5,6 +5,7 @@ import {
   removeLoadingMessage,
   selection,
 } from './modules/user-interface.js';
+import apiKey from './modules/config.js';
 
 const answerBox = document.querySelector('.answer-text-box');
 const languageSelection = document.querySelector('.language-selection-buttons');
@@ -14,7 +15,6 @@ const form = document.getElementById('form');
 // Make an API request to OpenAI's chat completion endpoint and display the message response as an answer
 async function getCompletion(message, language) {
   const url = 'https://api.openai.com/v1/chat/completions';
-  const apiKey = '';
 
   displayLoadingMessage();
 
@@ -58,14 +58,14 @@ function displayAnswer(event) {
   getCompletion(input, selection);
 }
 
-// Sets the border for the card of the selected programming language
+// Sets the border for the button of the selected programming language
 function setLanguageButtonBorder(event) {
   const clickedButton = event.target;
   const allLanguageButtons = document.querySelectorAll('.language-button');
 
   // Remove the 'active' class from all buttons when clicking on one
   if (clickedButton.classList.contains('language-button')) {
-    allLanguageButtons.forEach(button => {
+    allLanguageButtons.forEach((button) => {
       button.classList.remove('active');
     });
     // Add the 'active' class only to the button that was clicked
