@@ -29,7 +29,7 @@ function displayLoadingMessage() {
 
 function removeLoadingMessage() {
   mainContainer.removeChild(loadingMessage);
-} 
+}
 
 export {
   setLanguageSelection,
