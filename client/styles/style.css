@@ -111,6 +111,7 @@
   border-radius: 5px;
   padding: 12px 16px;
   gap: 10px;
+  overflow-y: auto;
 }
 
 .question-text-box {
@@ -121,6 +122,9 @@
 .answer-text-box {
   font-size: 14px;
   text-align: left;
+  max-width: 600px; /* Adjust the value as per your desired maximum width */
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .loadingMessage {
@@ -129,8 +133,4 @@
   font-weight: 500;
   margin: 0px;
   text-decoration: underline;
-}
-
-.pre-container {
-  overflow: auto;
 }
