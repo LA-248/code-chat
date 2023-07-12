@@ -20,17 +20,17 @@ function displayQuestion() {
 }
 
 function displayLoadingMessage() {
-  const mainContainer = document.querySelector('.main-container');
+  const form = document.getElementById('form');
 
   loadingMessage.className = 'loadingMessage';
   loadingMessage.textContent =
     'Please wait while the request is being processed...';
-  mainContainer.appendChild(loadingMessage);
+  form.appendChild(loadingMessage);
 }
 
 function removeLoadingMessage() {
-  const mainContainer = document.querySelector('.main-container');
-  mainContainer.removeChild(loadingMessage);
+  const form = document.getElementById('form');
+  form.removeChild(loadingMessage);
 }
 
 export {

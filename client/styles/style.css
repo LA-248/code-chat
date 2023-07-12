@@ -47,14 +47,6 @@
   gap: 15px;
 }
 
-.input-and-answer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-}
-
 .language-selection-buttons {
   display: flex;
   gap: 7px;
@@ -101,6 +93,23 @@
   border: 2px solid #36BFFA;
 }
 
+.input-and-answer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.loadingMessage {
+  color: #36BFFA;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 10px 0px 0px 0px;
+  text-decoration: underline;
+  text-align: center;
+}
+
 .response-container {
   display: flex;
   flex-direction: column;
@@ -125,12 +134,4 @@
   max-width: 600px;
   overflow-wrap: break-word;
   white-space: pre-wrap;
-}
-
-.loadingMessage {
-  color: #36BFFA;
-  font-size: 14px;
-  font-weight: 500;
-  margin: 0px;
-  text-decoration: underline;
 }
