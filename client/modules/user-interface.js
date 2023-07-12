@@ -2,6 +2,8 @@
 // Replace with a callback function
 let selection = '';
 
+const loadingMessage = document.createElement('p');
+
 function setLanguageSelection(event) {
   const questionInput = document.getElementById('question-input');
   if (event.target.className === 'language-button') {
@@ -18,7 +20,6 @@ function displayQuestion() {
 }
 
 function displayLoadingMessage() {
-  const loadingMessage = document.createElement('p');
   const mainContainer = document.querySelector('.main-container');
 
   loadingMessage.className = 'loadingMessage';
@@ -28,7 +29,6 @@ function displayLoadingMessage() {
 }
 
 function removeLoadingMessage() {
-  const loadingMessage = document.createElement('p');
   const mainContainer = document.querySelector('.main-container');
   mainContainer.removeChild(loadingMessage);
 }
