@@ -122,7 +122,7 @@
 .answer-text-box {
   font-size: 14px;
   text-align: left;
-  max-width: 600px; /* Adjust the value as per your desired maximum width */
+  max-width: 600px;
   overflow-wrap: break-word;
   white-space: pre-wrap;
 }
