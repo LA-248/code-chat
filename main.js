@@ -4,8 +4,8 @@ import {
   displayLoadingMessage,
   removeLoadingMessage,
   selection,
-} from './modules/user-interface.js';
-import apiKey from './modules/config.js';
+} from './modules/user-interface';
+import apiKey from './modules/config';
 
 const answerBox = document.querySelector('.answer-text-box');
 const languageSelection = document.querySelector('.language-selection-buttons');

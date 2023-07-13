@@ -26,7 +26,7 @@
 }
 
 .main-heading-subtext {
-  color: #A0A3BD;
+  color: #a0a3bd;
   text-align: center;
   font-size: 14px;
   font-weight: 400;
@@ -72,7 +72,7 @@
 }
 
 .language-button.active {
-  border: 2px solid #36BFFA;
+  border: 2px solid #36bffa;
 }
 
 #question-input {
@@ -90,7 +90,7 @@
 }
 
 #question-input:focus {
-  border: 2px solid #36BFFA;
+  border: 2px solid #36bffa;
 }
 
 .input-and-answer {
@@ -102,7 +102,7 @@
 }
 
 .loadingMessage {
-  color: #36BFFA;
+  color: #36bffa;
   font-size: 14px;
   font-weight: 500;
   margin: 10px 0px 0px 0px;
