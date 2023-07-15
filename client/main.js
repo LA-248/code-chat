@@ -4,13 +4,28 @@ import {
   displayLoadingMessage,
   removeLoadingMessage,
   selection,
-} from './modules/user-interface';
-import apiKey from './modules/config';
+} from './modules/user-interface.js';
 
 const answerBox = document.querySelector('.answer-text-box');
 const languageSelection = document.querySelector('.language-selection-buttons');
 const questionInput = document.getElementById('question-input');
 const form = document.getElementById('form');
+let apiKey;
+
+async function fetchAPIKey() {
+  try {
+    const response = await fetch('http://localhost:3000/api/key', {
+      method: 'GET',
+      mode: 'cors',
+    });
+    const data = await response.json();
+    apiKey = data.apiKey;
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+fetchAPIKey();
 
 // Make an API request to OpenAI's chat completion endpoint and display the message response as an answer
 async function getCompletion(message, language) {
