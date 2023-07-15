@@ -14,7 +14,7 @@ let apiKey;
 
 async function fetchAPIKey() {
   try {
-    const response = await fetch('http://localhost:3000/api/key', {
+    const response = await fetch('/api/key', {
       method: 'GET',
       mode: 'cors',
     });
