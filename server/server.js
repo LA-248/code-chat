@@ -1,13 +1,6 @@
 require('dotenv').config();
-const express = require('express');
 
-const app = express();
-app.use(express.json());
-
-app.get('/api/key', (req, res) => {
-  const apiKey = process.env.API_KEY;
-  res.json({ apiKey });
-});
+const app = require('./api/index.js');
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
