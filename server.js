@@ -1,6 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 
 const app = express();
+
 app.use(express.json());
 
 app.get('/api/key', (req, res) => {
@@ -8,4 +10,7 @@ app.get('/api/key', (req, res) => {
   res.json({ apiKey });
 });
 
-module.exports = app;
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
