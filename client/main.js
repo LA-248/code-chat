@@ -17,6 +17,9 @@ async function fetchAPIKey() {
     const response = await fetch('/api/key', {
       method: 'GET',
       mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
     const data = await response.json();
     apiKey = data.apiKey;
