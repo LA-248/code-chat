@@ -3,7 +3,9 @@ import {
   displayQuestion,
   displayLoadingMessage,
   removeLoadingMessage,
-  selection,
+  addQuestionToChatHistory,
+  displayRecentQuestion,
+  selection
 } from './modules/user-interface.js';
 
 const answerBox = document.querySelector('.answer-text-box');
@@ -14,7 +16,7 @@ let apiKey;
 
 async function fetchAPIKey() {
   try {
-    const response = await fetch('/api/key', {
+    const response = await fetch('http://localhost:3000/api/key', {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -29,6 +31,9 @@ async function fetchAPIKey() {
 }
 
 fetchAPIKey();
+
+// Retrieve question and answer for most recent prompt
+const lastSavedPrompt = JSON.parse(localStorage.getItem('lastPrompt')) || {};
 
 // Make an API request to OpenAI's chat completion endpoint and display the message response as an answer
 async function getCompletion(message, language) {
@@ -63,10 +68,21 @@ async function getCompletion(message, language) {
     removeLoadingMessage();
     const answer = data.choices[0].message.content;
     answerBox.textContent = answer;
+
+    // Store the question and answer of the most recent prompt
+    const questionTextBox = document.querySelector('.question-text-box').textContent;
+    const lastPrompt = {
+      question: questionTextBox,
+      answerText: answer,
+    }
+    localStorage.setItem('lastPrompt', JSON.stringify(lastPrompt));
   } catch (error) {
     console.error('Error:', error.message);
   }
 }
+
+displayRecentQuestion(lastSavedPrompt);
+addQuestionToChatHistory(lastSavedPrompt);
 
 // Function that displays the answer returned by the OpenAI API in the appropriate text box
 function displayAnswer(event) {
@@ -107,9 +123,11 @@ form.addEventListener('submit', (event) => {
 });
 
 window.onload = () => {
+  // Disable question input until the user selects a programming language to ask questions about
   questionInput.disabled = true;
   if (questionInput.disabled === true) {
     questionInput.style.backgroundColor = '#f8f8f8';
     questionInput.placeholder = 'Please select a programming language';
   }
+  console.log(lastSavedPrompt);
 };
