@@ -3,7 +3,6 @@
 let selection = '';
 
 const loadingMessage = document.createElement('p');
-const recentQuestion = document.createElement('div');
 
 function setLanguageSelection(event) {
   const questionInput = document.getElementById('question-input');
@@ -34,31 +33,10 @@ function removeLoadingMessage() {
   form.removeChild(loadingMessage);
 }
 
-/*
-function addQuestionToChatHistory(element) {
-  const chatHistory = document.querySelector('.chat-history');
-  recentQuestion.className = 'recentQuestion';
-  recentQuestion.textContent = element[0].question;
-  recentQuestion.style.fontSize = '14px';
-  chatHistory.append(recentQuestion);
-}
-
-function displayRecentQuestion(element) {
-  recentQuestion.addEventListener('click', () => {
-    const questionTextBox = document.querySelector('.question-text-box');
-    const answerBox = document.querySelector('.answer-text-box');
-    questionTextBox.textContent = element[0].question;
-    answerBox.textContent = element[0].answerText;
-  })
-}
-*/
-
 export {
   setLanguageSelection,
   displayQuestion,
   displayLoadingMessage,
   removeLoadingMessage,
-  // addQuestionToChatHistory,
-  // displayRecentQuestion,
   selection,
 };
