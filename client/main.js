@@ -3,10 +3,13 @@ import {
   displayQuestion,
   displayLoadingMessage,
   removeLoadingMessage,
-  // addQuestionToChatHistory,
-  // displayRecentQuestion,
   selection
 } from './modules/user-interface.js';
+import {
+  saveQuestionToHistory,
+  addRecentQuestionToUI,
+  displayRecentQuestion
+} from './modules/chat-history.js';
 
 const answerBox = document.querySelector('.answer-text-box');
 const languageSelection = document.querySelector('.language-selection-buttons');
@@ -31,23 +34,6 @@ async function fetchAPIKey() {
 }
 
 fetchAPIKey();
-
-// Add the question and answer of the most recent prompt to localStorage
-function saveQuestionToHistory(questionText, answerText) {
-  const questionHistory = JSON.parse(localStorage.getItem('questionHistory')) || [];
-
-  const newQuestion = {
-    question: questionText,
-    answer: answerText
-  };
-  
-  questionHistory.push(newQuestion);
-  
-  localStorage.setItem('questionHistory', JSON.stringify(questionHistory));
-}
-
-// Retrieve question and answer for most recent prompt
-const lastSavedPrompt = JSON.parse(localStorage.getItem('lastPrompt')) || {};
 
 // Make an API request to OpenAI's chat completion endpoint and display the message response as an answer
 async function getCompletion(message, language) {
@@ -90,8 +76,13 @@ async function getCompletion(message, language) {
   }
 }
 
-// displayRecentQuestion(lastSavedPrompt);
-// addQuestionToChatHistory(lastSavedPrompt);
+const chatHistory = document.querySelector('.chat-history');
+
+addRecentQuestionToUI()
+
+chatHistory.addEventListener('click', event => {
+  displayRecentQuestion(event);
+});
 
 // Function that displays the answer returned by the OpenAI API in the appropriate text box
 function displayAnswer(event) {
@@ -138,5 +129,4 @@ window.onload = () => {
     questionInput.style.backgroundColor = '#f8f8f8';
     questionInput.placeholder = 'Please select a programming language';
   }
-  console.log(lastSavedPrompt);
 };
