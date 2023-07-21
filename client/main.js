@@ -3,8 +3,8 @@ import {
   displayQuestion,
   displayLoadingMessage,
   removeLoadingMessage,
-  addQuestionToChatHistory,
-  displayRecentQuestion,
+  // addQuestionToChatHistory,
+  // displayRecentQuestion,
   selection
 } from './modules/user-interface.js';
 
@@ -31,6 +31,20 @@ async function fetchAPIKey() {
 }
 
 fetchAPIKey();
+
+// Add the question and answer of the most recent prompt to localStorage
+function saveQuestionToHistory(questionText, answerText) {
+  const questionHistory = JSON.parse(localStorage.getItem('questionHistory')) || [];
+
+  const newQuestion = {
+    question: questionText,
+    answer: answerText
+  };
+  
+  questionHistory.push(newQuestion);
+  
+  localStorage.setItem('questionHistory', JSON.stringify(questionHistory));
+}
 
 // Retrieve question and answer for most recent prompt
 const lastSavedPrompt = JSON.parse(localStorage.getItem('lastPrompt')) || {};
@@ -69,20 +83,15 @@ async function getCompletion(message, language) {
     const answer = data.choices[0].message.content;
     answerBox.textContent = answer;
 
-    // Store the question and answer of the most recent prompt
     const questionTextBox = document.querySelector('.question-text-box').textContent;
-    const lastPrompt = {
-      question: questionTextBox,
-      answerText: answer,
-    }
-    localStorage.setItem('lastPrompt', JSON.stringify(lastPrompt));
+    saveQuestionToHistory(questionTextBox, answer);
   } catch (error) {
     console.error('Error:', error.message);
   }
 }
 
-displayRecentQuestion(lastSavedPrompt);
-addQuestionToChatHistory(lastSavedPrompt);
+// displayRecentQuestion(lastSavedPrompt);
+// addQuestionToChatHistory(lastSavedPrompt);
 
 // Function that displays the answer returned by the OpenAI API in the appropriate text box
 function displayAnswer(event) {
