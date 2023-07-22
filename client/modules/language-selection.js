@@ -37,4 +37,6 @@ function setSelectedLanguage() {
   });
 }
 
-export { selection, questionInput, setSelectedLanguage };
+setSelectedLanguage();
+
+export { selection, questionInput };

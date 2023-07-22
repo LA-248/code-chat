@@ -47,8 +47,7 @@ function addClickListenerToChatHistory() {
   });
 }
 
-export {
-  saveQuestionToHistory,
-  addRecentQuestionToUI,
-  addClickListenerToChatHistory
-}
+addRecentQuestionToUI();
+addClickListenerToChatHistory();
+
+export default saveQuestionToHistory;

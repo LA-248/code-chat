@@ -1,11 +1,4 @@
-import {
-  questionInput,
-  setSelectedLanguage,
-} from './modules/language-selection.js';
-import {
-  addRecentQuestionToUI,
-  addClickListenerToChatHistory,
-} from './modules/chat-history.js';
+import { questionInput } from './modules/language-selection.js';
 import { displayQuestion, displayAnswer } from './modules/chat-window.js';
 
 const form = document.getElementById('form');
@@ -27,7 +20,3 @@ window.onload = () => {
     questionInput.placeholder = 'Please select a programming language';
   }
 };
-
-setSelectedLanguage();
-addRecentQuestionToUI();
-addClickListenerToChatHistory();
