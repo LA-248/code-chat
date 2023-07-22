@@ -1,8 +1,5 @@
 // Global variable to store the user's programming language selection
-// Replace with a callback function
 let selection = '';
-
-const loadingMessage = document.createElement('p');
 
 function setLanguageSelection(event) {
   const questionInput = document.getElementById('question-input');
@@ -21,14 +18,17 @@ function displayQuestion() {
 
 function displayLoadingMessage() {
   const form = document.getElementById('form');
+  const loadingMessage = document.createElement('p');
 
   loadingMessage.className = 'loadingMessage';
   loadingMessage.textContent =
     'Please wait while the request is being processed...';
   form.appendChild(loadingMessage);
+
+  return loadingMessage;
 }
 
-function removeLoadingMessage() {
+function removeLoadingMessage(loadingMessage) {
   const form = document.getElementById('form');
   form.removeChild(loadingMessage);
 }

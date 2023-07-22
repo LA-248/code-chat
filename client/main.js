@@ -1,88 +1,16 @@
+import getCompletion from './modules/openai-chat-api.js';
 import {
   setLanguageSelection,
   displayQuestion,
-  displayLoadingMessage,
-  removeLoadingMessage,
   selection
 } from './modules/user-interface.js';
 import {
-  saveQuestionToHistory,
   addRecentQuestionToUI,
-  displayRecentQuestion
+  addClickListenerToChatHistory
 } from './modules/chat-history.js';
 
-const answerBox = document.querySelector('.answer-text-box');
-const languageSelection = document.querySelector('.language-selection-buttons');
 const questionInput = document.getElementById('question-input');
 const form = document.getElementById('form');
-let apiKey;
-
-async function fetchAPIKey() {
-  try {
-    const response = await fetch('http://localhost:3000/api/key', {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await response.json();
-    apiKey = data.apiKey;
-  } catch (error) {
-    console.error('Error:', error.message);
-  }
-}
-
-fetchAPIKey();
-
-// Make an API request to OpenAI's chat completion endpoint and display the message response as an answer
-async function getCompletion(message, language) {
-  const url = 'https://api.openai.com/v1/chat/completions';
-
-  displayLoadingMessage();
-
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages: [
-          {
-            role: 'system',
-            content: `You are a ${language} helper chatbot who answers questions about using ${language}.`,
-          },
-          { role: 'user', content: message },
-        ],
-        top_p: 1.0,
-        frequency_penalty: 0.5,
-        presence_penalty: 0.0,
-      }),
-    });
-
-    const data = await response.json();
-    console.log(data);
-    removeLoadingMessage();
-    const answer = data.choices[0].message.content;
-    answerBox.textContent = answer;
-
-    const questionTextBox = document.querySelector('.question-text-box').textContent;
-    saveQuestionToHistory(questionTextBox, answer);
-  } catch (error) {
-    console.error('Error:', error.message);
-  }
-}
-
-const chatHistory = document.querySelector('.chat-history');
-
-addRecentQuestionToUI()
-
-chatHistory.addEventListener('click', event => {
-  displayRecentQuestion(event);
-});
 
 // Function that displays the answer returned by the OpenAI API in the appropriate text box
 function displayAnswer(event) {
@@ -107,15 +35,21 @@ function setLanguageButtonBorder(event) {
   }
 }
 
-languageSelection.addEventListener('click', (event) => {
-  setLanguageSelection(event);
-  setLanguageButtonBorder(event);
-  questionInput.disabled = false;
-  questionInput.style.backgroundColor = 'white';
-});
+function setSelectedLanguage() {
+  const languageSelection = document.querySelector('.language-selection-buttons');
+  
+  languageSelection.addEventListener('click', (event) => {
+    setLanguageSelection(event);
+    setLanguageButtonBorder(event);
+    questionInput.disabled = false;
+    questionInput.style.backgroundColor = 'white';
+  });
+}
 
 // Once the user submits their question, display the answer returned and the question asked
 form.addEventListener('submit', (event) => {
+  const answerBox = document.querySelector('.answer-text-box');
+  
   displayAnswer(event);
   displayQuestion();
   questionInput.value = '';
@@ -130,3 +64,7 @@ window.onload = () => {
     questionInput.placeholder = 'Please select a programming language';
   }
 };
+
+setSelectedLanguage()
+addRecentQuestionToUI()
+addClickListenerToChatHistory();

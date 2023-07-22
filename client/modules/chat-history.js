@@ -16,7 +16,8 @@ function saveQuestionToHistory(questionText, answerText) {
 function createRecentQuestion(prompt) {
   const chatHistory = document.querySelector('.chat-history');
   const recentQuestion = document.createElement('div');
-  recentQuestion.className = 'recentQuestion';
+  
+  recentQuestion.className = 'recent-question';
   recentQuestion.style.fontSize = '14px';
   recentQuestion.textContent = prompt.question;
   chatHistory.append(recentQuestion);
@@ -28,8 +29,8 @@ function addRecentQuestionToUI() {
   });
 }
 
-function displayRecentQuestion(event) {
-  if (event.target.className === 'recentQuestion') {
+function displayClickedPromptInChatWindow(event) {
+  if (event.target.className === 'recent-question') {
     const questionTextBox = document.querySelector('.question-text-box');
     const answerBox = document.querySelector('.answer-text-box');
     questionTextBox.textContent = questionHistory[0].question;
@@ -37,8 +38,17 @@ function displayRecentQuestion(event) {
   }
 }
 
+function addClickListenerToChatHistory() {
+  const chatHistory = document.querySelector('.chat-history');
+  chatHistory.addEventListener('click', event => {
+    if (event.target.classList.contains('recent-question')) {
+      displayClickedPromptInChatWindow(event);
+    }
+  });
+}
+
 export {
   saveQuestionToHistory,
   addRecentQuestionToUI,
-  displayRecentQuestion
+  addClickListenerToChatHistory
 }
