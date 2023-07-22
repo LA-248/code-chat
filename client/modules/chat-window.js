@@ -1,19 +1,18 @@
-// Global variable to store the user's programming language selection
-let selection = '';
-
-function setLanguageSelection(event) {
-  const questionInput = document.getElementById('question-input');
-  if (event.target.className === 'language-button') {
-    selection = event.target.textContent;
-    questionInput.placeholder = `Ask any question about using ${selection}`;
-    console.log(selection);
-  }
-}
+import getCompletion from './openai-chat-api.js';
+import { selection } from './language-selection.js';
 
 function displayQuestion() {
   const questionTextBox = document.querySelector('.question-text-box');
   const input = document.getElementById('question-input').value;
   questionTextBox.textContent = input;
+}
+
+// Function that displays the answer returned by the OpenAI API in the appropriate text box
+function displayAnswer(event) {
+  // Prevent the page from automatically refreshing on form submission
+  event.preventDefault();
+  const input = document.getElementById('question-input').value;
+  getCompletion(input, selection);
 }
 
 function displayLoadingMessage() {
@@ -34,9 +33,8 @@ function removeLoadingMessage(loadingMessage) {
 }
 
 export {
-  setLanguageSelection,
   displayQuestion,
+  displayAnswer,
   displayLoadingMessage,
-  removeLoadingMessage,
-  selection,
+  removeLoadingMessage
 };

@@ -1,8 +1,5 @@
 import fetchAPIKey from './api-key-fetcher.js';
-import {
-  displayLoadingMessage,
-  removeLoadingMessage,
-} from './user-interface.js';
+import { displayLoadingMessage, removeLoadingMessage } from './chat-window.js';
 import { saveQuestionToHistory } from './chat-history.js';
 
 // Make an API request to OpenAI's chat completion endpoint and display the message response as an answer
