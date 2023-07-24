@@ -104,6 +104,11 @@
   text-decoration: underline;
 }
 
+.recent-question:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .chat-window {
   display: flex;
   flex-direction: column;
