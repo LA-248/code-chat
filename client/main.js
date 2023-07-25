@@ -12,6 +12,7 @@ form.addEventListener('submit', (event) => {
   answerBox.textContent = '';
 });
 
+// Tasks to perform on window load
 window.onload = () => {
   // Disable question input until the user selects a programming language to ask questions about
   questionInput.disabled = true;

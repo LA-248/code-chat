@@ -1,6 +1,7 @@
 let selection;
 const questionInput = document.getElementById('question-input');
 
+// Set the programming language selected by the user
 function setLanguageSelection(event) {
   if (event.target.className === 'language-button') {
     selection = event.target.textContent;
@@ -24,6 +25,7 @@ function setLanguageButtonBorder(event) {
   }
 }
 
+// Set up the event listener for the language selection buttons - which calls the above functions when triggered
 function setSelectedLanguage() {
   const languageSelection = document.querySelector(
     '.language-selection-buttons'

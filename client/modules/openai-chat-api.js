@@ -35,6 +35,7 @@ export default async function getCompletion(message, language) {
     const data = await response.json();
     console.log(data);
     removeLoadingMessage(loadingMessage);
+    // Extract the generated answer from the API response and display it in the answer text box
     const answer = data.choices[0].message.content;
     answerBox.textContent = answer;
 
