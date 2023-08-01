@@ -14,27 +14,21 @@
 
   <body>
     <div class="main-container">
-      <div class="heading-text-wrapper">
-        <div class="main-heading">Code Q&A</div>
-        <div class="main-heading-subtext">
-          Get answers to questions related to a specific programming language
-        </div>
-      </div>
-
       <div class="content-wrapper">
         <div class="prompt-container">
-          <div class="language-selection-buttons">
-            <div class="language-button" data-language="Python" data-id="1">Python</div>
-            <div class="language-button" data-language="JavaScript" data-id="2">JavaScript</div>
-            <div class="language-button" data-language="Ruby" data-id="3">Ruby</div>
-            <div class="language-button" data-language="C++" data-id="4">C++</div>
-          </div>
-
           <div class="input-and-answer">
             <div class="chat-history">
               <div class="chat-history-heading">Your recent questions</div>
             </div>
             <div class="chat-window">
+              <!--
+              <div class="heading-text-wrapper">
+                <div class="main-heading">Code Q&A</div>
+                <div class="main-heading-subtext">
+                  Get answers to questions related to a specific programming language
+                </div>
+              </div>
+              -->
               <div class="question-and-answer">
                 <div class="question-wrapper">
                   <div class="question-text-box"></div>
@@ -45,13 +39,24 @@
                   </div>
                 </div>
               </div>
-              <div class="input-form">
-                <form id="form" method="get">
-                  <label for="question-input"></label>
-                  <div class="input-container">
-                    <input type="text" id="question-input" placeholder="" />
-                  </div>
-                </form>
+              <div class="input-and-dropdown">
+                <div class="input-form">
+                  <form id="form" method="get">
+                    <label for="question-input"></label>
+                    <div class="input-container">
+                      <input type="text" id="question-input" placeholder="" />
+                    </div>
+                  </form>
+                </div>
+                <div class="dropdown-container">
+                  <select id="dropdown-menu">
+                    <option class="language-button" value="Select">Select a language</option>
+                    <option class="language-button" value="Python">Python</option>
+                    <option class="language-button" value="JavaScript">JavaScript</option>
+                    <option class="language-button" value="Ruby">Ruby</option>
+                    <option class="language-button" value="C++">C++</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
