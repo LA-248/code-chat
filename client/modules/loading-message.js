@@ -3,7 +3,7 @@ function displayLoadingMessage() {
   const form = document.getElementById('form');
   const loadingMessage = document.createElement('p');
 
-  loadingMessage.className = 'loadingMessage';
+  loadingMessage.className = 'loading-message';
   loadingMessage.textContent = 'Please wait while the request is being processed...';
   form.appendChild(loadingMessage);
 

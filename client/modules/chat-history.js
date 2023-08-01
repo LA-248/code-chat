@@ -11,7 +11,7 @@ function createRecentQuestion(prompt) {
 
   recentQuestion.className = 'recent-question';
   recentQuestion.style.fontSize = '14px';
-  recentQuestion.textContent = prompt.question;
+  recentQuestion.textContent = `${prompt.question} | ${prompt.language}`;
   recentQuestion.setAttribute('id', (questionIdCounter += 1));
   chatHistory.append(recentQuestion);
 
@@ -20,10 +20,11 @@ function createRecentQuestion(prompt) {
 }
 
 // Add the question, answer, and assign an ID to the most recent prompt - then add it to localStorage
-function saveQuestionToHistory(questionText, answerText, questionID) {
+function saveQuestionToHistory(questionText, answerText, languageSelection, questionID) {
   const newQuestion = {
     question: questionText,
     answer: answerText,
+    language: languageSelection,
     id: questionID,
   };
 
@@ -40,6 +41,20 @@ function addRecentQuestionToUI() {
   });
 }
 
+function removeMainHeading() {
+  let isHeadingRemoved = false;
+
+  return function() {
+    const heading = document.querySelector('.heading-text-wrapper');
+    if (isHeadingRemoved === false) {
+      heading.remove();;
+      isHeadingRemoved = true;
+    }
+  }
+}
+
+const removeHeading = removeMainHeading();
+
 // Add the index of each question in the chat history to an array called 'indices'
 function retrieveIndicesOfRecentQuestions() {
   const allRecentQuestions = document.querySelectorAll('.recent-question');
@@ -55,6 +70,8 @@ function retrieveIndicesOfRecentQuestions() {
 // Displays the question and answer information of a clicked question in the chat window
 function displayClickedPromptInChatWindow(event) {
   if (event.target.className === 'recent-question') {
+    removeHeading();
+
     const questionTextBox = document.querySelector('.question-text-box');
     const answerBox = document.querySelector('.answer-text-box');
 
@@ -64,7 +81,7 @@ function displayClickedPromptInChatWindow(event) {
     // Calculate the index of the clicked question in the questionIndices array
     // Since array indices start from 0, subtract 1 from the clickedQuestionId
     clickedQuestionIndex = clickedQuestionId - 1;
-   
+
     // Check if the calculated clickedQuestionIndex is within the valid range
     if (clickedQuestionIndex >= 0 && clickedQuestionIndex < questionIndices.length) {
       const clickedQuestion = questionIndices[clickedQuestionIndex];
@@ -99,27 +116,18 @@ const displayDeleteQuestionButton = createDeleteQuestionButton();
 function removeQuestionFromChatHistory() {
   const deleteButton = document.querySelector('.delete-button');
   const questionName = deleteButton.previousElementSibling;
-  
+
   // Find the question in localStorage which matches the current question being displayed
-  const questionToDelete = questionHistory.find(element => element.question === questionName.textContent);
+  const questionToDelete = questionHistory.find((element) => element.question === questionName.textContent);
 
   // If there is a match, delete it from localStorage
+  // The clickedQuestionIndex is retrieved from the 'displayClickedPromptInChatWindow' function - which is called when a user clicks on a question in the chat history
   if (questionToDelete) {
     questionHistory.splice(clickedQuestionIndex, 1);
   }
 
   localStorage.setItem('questionHistory', JSON.stringify(questionHistory));
 }
-
-/* 
-Adds an event listener to the document, if the element clicked contains the 'delete-button' class -
-call the 'removeQuestionFromChatHistory' function
-*/
-document.addEventListener('click', (event) => {
-  if (event.target.classList.contains('delete-button')) {
-    window.location.reload(removeQuestionFromChatHistory());
-  }
-});
 
 // Add a click event listener to each question in the chat history which calls the relevant functions when triggered
 function addClickListenerToRecentQuestions() {
@@ -132,7 +140,16 @@ function addClickListenerToRecentQuestions() {
   });
 }
 
+/* 
+Adds an event listener to the document, if the element clicked is the 'Delete chat' button, call the 'removeQuestionFromChatHistory' function
+*/
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('delete-button')) {
+    window.location.reload(removeQuestionFromChatHistory());
+  }
+});
+
 addRecentQuestionToUI();
 addClickListenerToRecentQuestions();
 
-export { createRecentQuestion, saveQuestionToHistory };
+export { createRecentQuestion, saveQuestionToHistory, questionHistory, removeHeading };

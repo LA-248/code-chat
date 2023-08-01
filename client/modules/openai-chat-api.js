@@ -1,6 +1,7 @@
 import fetchAPIKey from './api-key-fetcher.js';
 import { displayLoadingMessage, removeLoadingMessage } from './loading-message.js';
 import { createRecentQuestion, saveQuestionToHistory } from './chat-history.js';
+import { selection } from './language-selection.js';
 
 // Make an API request to OpenAI's chat completion endpoint and display the message response as an answer
 export default async function getCompletion(message, language) {
@@ -41,7 +42,8 @@ export default async function getCompletion(message, language) {
 
     const questionTextBox = document.querySelector('.question-text-box').textContent;
     const questionID = createRecentQuestion(prompt);
-    saveQuestionToHistory(questionTextBox, answer, questionID);
+    saveQuestionToHistory(questionTextBox, answer, selection, questionID);
+    // createRecentQuestion(questionHistory[questionHistory.length - 1]);
   } catch (error) {
     console.error('Error:', error.message);
   }
