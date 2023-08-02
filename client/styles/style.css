@@ -33,9 +33,23 @@ body {
 .main-heading-subtext {
   color: black;
   text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  max-width: fit-content;
+}
+
+.subtext {
+  color: black;
+  text-align: center;
   font-size: 14px;
   font-weight: 400;
   max-width: fit-content;
+  margin-top: 15px;
+}
+
+hr.divider {
+  border-top: 1px solid black;
+  width: 100%;
 }
 
 .content-wrapper {
@@ -200,7 +214,7 @@ body {
   display: flex;
   justify-self: left;
   color: #36bffa;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   margin: 10px 0px 0px 0px;
   text-decoration: underline;
