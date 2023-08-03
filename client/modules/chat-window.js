@@ -5,7 +5,7 @@ import { selection } from './language-selection.js';
 function displayQuestion() {
   const questionTextBox = document.querySelector('.question-text-box');
   const input = document.getElementById('question-input').value;
-  questionTextBox.textContent = input;
+  questionTextBox.textContent = `${input} | ${selection}`;
 }
 
 // Function that displays the answer returned by the OpenAI API in the appropriate text box

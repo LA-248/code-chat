@@ -1,8 +1,8 @@
 const questionHistory = JSON.parse(localStorage.getItem('questionHistory')) || [];
 let clickedQuestionIndex;
 
-  // This counter is attached to the 'recent-question' HTML element and incremented each time a new question is created
-  let recentQuestionIdCounter = 0;
+// This counter is attached to the 'recent-question' HTML element and incremented each time a new question is created
+let recentQuestionIdCounter = 0;
 
 // Creates and appends a new HTML element for a recent question in the chat history
 function createRecentQuestion(prompt) {
@@ -11,7 +11,7 @@ function createRecentQuestion(prompt) {
 
   recentQuestion.className = 'recent-question';
   recentQuestion.style.fontSize = '14px';
-  recentQuestion.textContent = `${prompt.question} | ${prompt.language}`;
+  recentQuestion.textContent = `${prompt.question}`;
   recentQuestion.setAttribute('id', (recentQuestionIdCounter += 1));
   chatHistory.append(recentQuestion);
 }
@@ -81,7 +81,7 @@ function displayClickedPromptInChatWindow(event) {
     // Check if the calculated clickedQuestionIndex is within the valid range
     if (clickedQuestionIndex >= 0 && clickedQuestionIndex < questionIndices.length) {
       const clickedQuestion = questionIndices[clickedQuestionIndex];
-      questionTextBox.textContent = questionHistory[clickedQuestion].question;
+      questionTextBox.textContent = `${questionHistory[clickedQuestion].question}`;
       answerBox.textContent = questionHistory[clickedQuestion].answer;
     }
   }
