@@ -107,7 +107,7 @@ hr.divider {
   border: 2px solid #36bffa;
 }
 
-.input-and-answer {
+.card-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,6 +127,29 @@ hr.divider {
   padding: 24px 20px;
   gap: 20px;
   overflow-y: auto;
+}
+
+.new-chat {
+  display: flex;
+  justify-self: center;
+}
+
+.new-chat-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 233px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 25px;
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.new-chat-button:hover {
+  cursor: pointer;
+  background-color: rgb(255, 249, 249);
 }
 
 .chat-history-heading {
