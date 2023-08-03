@@ -41,13 +41,12 @@ export default async function getCompletion(message, language) {
     answerBox.textContent = answer;
 
     const questionTextBox = document.querySelector('.question-text-box').textContent;
-    const recentQuestion = document.querySelector('.recent-question');
-    const questionID = recentQuestion.getAttribute('id');
 
     // Save the prompt's information to localStorage
-    saveQuestionToHistory(questionTextBox, answer, selection, questionID);
+    saveQuestionToHistory(questionTextBox, answer, selection);
     // Create and append the most recent question asked to the chat history
-    createRecentQuestion(questionHistory[questionHistory.length - 1]);
+    const lastQuestion = questionHistory[questionHistory.length - 1]
+    createRecentQuestion(lastQuestion);
   } catch (error) {
     console.error('Error:', error.message);
   }

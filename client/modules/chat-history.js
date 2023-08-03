@@ -1,8 +1,8 @@
 const questionHistory = JSON.parse(localStorage.getItem('questionHistory')) || [];
 let clickedQuestionIndex;
 
-// Initialize the counter for setting the ID attributes of each question - the IDs must ascend
-let questionIdCounter = 0;
+  // This counter is attached to the 'recent-question' HTML element and incremented each time a new question is created
+  let recentQuestionIdCounter = 0;
 
 // Creates and appends a new HTML element for a recent question in the chat history
 function createRecentQuestion(prompt) {
@@ -12,20 +12,16 @@ function createRecentQuestion(prompt) {
   recentQuestion.className = 'recent-question';
   recentQuestion.style.fontSize = '14px';
   recentQuestion.textContent = `${prompt.question} | ${prompt.language}`;
-  recentQuestion.setAttribute('id', (questionIdCounter += 1));
+  recentQuestion.setAttribute('id', (recentQuestionIdCounter += 1));
   chatHistory.append(recentQuestion);
-
-  const questionID = recentQuestion.getAttribute('id');
-  return questionID;
 }
 
 // Add the question, answer, and assign an ID to the most recent prompt - then add it to localStorage
-function saveQuestionToHistory(questionText, answerText, languageSelection, questionID) {
+function saveQuestionToHistory(questionText, answerText, languageSelection) {
   const newQuestion = {
     question: questionText,
     answer: answerText,
     language: languageSelection,
-    id: questionID,
   };
 
   questionHistory.push(newQuestion);
