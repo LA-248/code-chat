@@ -13,8 +13,17 @@ function displayAnswer(event) {
   // Prevent the page from automatically refreshing on form submission
   event.preventDefault();
   const input = document.getElementById('question-input').value;
-  // Call the function which sends an API request to OpenAI's chat completion endpoint and displays the answer in the chat window
+  // Call the function that sends an API request to OpenAI's chat completion endpoint and displays the answer in the chat window
   getCompletion(input, selection);
 }
+
+function createNewChat() {
+  const newChatButton = document.querySelector('.new-chat-button');
+  newChatButton.addEventListener('click', () => {
+    window.location.reload();
+  });
+}
+
+createNewChat();
 
 export { displayQuestion, displayAnswer };
