@@ -112,16 +112,30 @@ const displayDeleteQuestionButton = createDeleteQuestionButton();
 function removeQuestionFromChatHistory() {
   const deleteButton = document.querySelector('.delete-button');
   const questionName = deleteButton.previousElementSibling;
+  const answer = document.querySelector('.answer-text-box');
+  const recentQuestions = document.querySelectorAll('.recent-question');
+  const recentQuestionsArray = Array.from(recentQuestions);
 
   // Find the question in localStorage which matches the current question being displayed
-  const questionToDelete = questionHistory.find((element) => element.question === questionName.textContent);
+  const deleteFromLocalStorage = questionHistory.find(element => element.question === questionName.textContent);
+  // Find the question in the chat history that matches the current question being displayed
+  const questionToDelete = recentQuestionsArray.find(question => question.textContent === questionName.textContent);
 
   // If there is a match, delete it from localStorage
   // The clickedQuestionIndex is retrieved from the 'displayClickedPromptInChatWindow' function - which is called when a user clicks on a question in the chat history
-  if (questionToDelete) {
+  if (deleteFromLocalStorage) {
     questionHistory.splice(clickedQuestionIndex, 1);
   }
 
+  // If there is a match, remove it from the chat history UI
+  if (questionToDelete) {
+    questionToDelete.remove();
+  }
+
+  // Clear the contents of the chat window after the question has been deleted
+  questionName.textContent = '';
+  answer.textContent = '';
+  
   localStorage.setItem('questionHistory', JSON.stringify(questionHistory));
 }
 
@@ -141,7 +155,7 @@ Adds an event listener to the document, if the element clicked is the 'Delete ch
 */
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('delete-button')) {
-    window.location.reload(removeQuestionFromChatHistory());
+    removeQuestionFromChatHistory();
   }
 });
 
