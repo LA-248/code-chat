@@ -14,6 +14,7 @@ export default async function getCompletion(message, language) {
   try {
     const response = await fetch(url, {
       method: 'POST',
+      mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
