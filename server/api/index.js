@@ -7,7 +7,6 @@ app.use(express.json());
 app.use(cors({
   origin: ['https://code-chat-frontend.vercel.app'],
   methods: ['POST', 'GET'],
-  credentials: true,
 }));
 
 app.get('/api/key', (req, res) => {
