@@ -1,6 +1,6 @@
 export default async function fetchAPIKey() {
   try {
-    const response = await fetch('https://code-chat-chi.vercel.app/api/key', {
+    const response = await fetch('https://code-chat-backend.vercel.app/api/key', {
       method: 'GET',
       mode: 'cors',
       headers: {
