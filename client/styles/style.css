@@ -209,6 +209,58 @@ hr.divider {
   background-color: rgb(255, 47, 47);
 }
 
+.rename-button {
+  text-decoration: none;
+  font-size: 13px;
+  border-radius: 20px;
+  width: 100px;
+  height: 30px;
+  background-color: gainsboro;
+  color: black;
+  border: none;
+  font-weight: 500;
+  margin: 0;
+}
+
+.rename-button:hover {
+  cursor: pointer;
+  background-color: rgb(214, 214, 214);
+}
+
+dialog {
+  opacity: 0;
+  scale: 0;
+  display: block;
+  transition: 0.5s all;
+  background-color: white;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+dialog[open] {
+  opacity: 1;
+  scale: 1;
+  border: none;
+}
+
+#rename-input {
+  display: flex;
+  padding: 16px;
+  margin: 0px;
+  border-radius: 25px;
+  width: 35vw;
+  height: 35px;
+  background-color: white;
+  color: black;
+  border: 1px solid rgb(189, 189, 189);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#rename-question-input:focus {
+  border: 2px solid #36bffa;
+}
+
 .input-and-dropdown {
   display: flex;
   justify-content: space-between;
