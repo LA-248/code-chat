@@ -1,3 +1,5 @@
+import { displayRenameQuestionButton, openModal, closeModalOnClick } from "./rename-question-modal.js";
+
 const questionHistory = JSON.parse(localStorage.getItem('questionHistory')) || [];
 let clickedQuestionIndex;
 
@@ -40,7 +42,7 @@ function addRecentQuestionToUI() {
 function removeMainHeading() {
   let isHeadingRemoved = false;
 
-  return function() {
+  return function () {
     const heading = document.querySelector('.heading-text-wrapper');
     if (isHeadingRemoved === false) {
       heading.remove();;
@@ -87,7 +89,7 @@ function displayClickedPromptInChatWindow(event) {
   }
 }
 
-// Creates a button which allows the user to delete the current question displayed in the chat window
+// Creates a button that allows the user to take a certain action on a question from their chat history (e.g. deleting or renaming a question)
 function createDeleteQuestionButton() {
   let isDeleteButtonAppended = false;
 
@@ -146,6 +148,7 @@ function addClickListenerToRecentQuestions() {
     if (event.target.classList.contains('recent-question')) {
       displayClickedPromptInChatWindow(event);
       displayDeleteQuestionButton();
+      displayRenameQuestionButton();
     }
   });
 }
@@ -159,7 +162,16 @@ document.addEventListener('click', (event) => {
   }
 });
 
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('rename-button')) {
+    openModal();
+  }
+});
+
 addRecentQuestionToUI();
 addClickListenerToRecentQuestions();
+
+// When the user clicks anywhere outside of the modal, close it
+window.addEventListener('click', closeModalOnClick);
 
 export { createRecentQuestion, saveQuestionToHistory, questionHistory, removeHeading };
