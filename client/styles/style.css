@@ -234,13 +234,18 @@ dialog {
   transition: 0.5s all;
   background-color: white;
   border-radius: 15px;
-  padding: 25px;
+  padding: 30px;
 }
 
 dialog[open] {
   opacity: 1;
   scale: 1;
   border: none;
+}
+
+.about-heading {
+  font-weight: 400;
+  margin-bottom: 10px;
 }
 
 #rename-input {
@@ -259,6 +264,48 @@ dialog[open] {
 
 #rename-question-input:focus {
   border: 2px solid #36bffa;
+}
+
+.rename-modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.close-button {
+  text-decoration: none;
+  font-size: 13px;
+  border-radius: 20px;
+  width: 17vw;
+  height: 35px;
+  background-color: gainsboro;
+  color: black;
+  border: none;
+  font-weight: 500;
+  margin: 0;
+}
+
+.close-button:hover {
+  cursor: pointer;
+  background-color: rgb(214, 214, 214);
+}
+
+.submit-button {
+  text-decoration: none;
+  font-size: 13px;
+  border-radius: 20px;
+  width: 17vw;
+  height: 35px;
+  background-color: rgb(0, 174, 255);
+  color: white;
+  border: none;
+  font-weight: 500;
+  margin: 0;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: rgb(20, 181, 255);
 }
 
 .input-and-dropdown {
