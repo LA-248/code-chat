@@ -63,28 +63,23 @@ function renameQuestion(event) {
   localStorage.setItem('questionHistory', JSON.stringify(questionHistory));
 }
 
-function attachModalEventListeners() {
-  const renameInputForm = document.getElementById('rename-input-form');
-  const submitButton = document.querySelector('.submit-button');
-  const closeButton = document.querySelector('.close-button');
+const renameInputForm = document.getElementById('rename-input-form');
+renameInputForm.addEventListener('submit', (event) => {
+  renameQuestion(event);
+  closeModal();
+});
 
-  renameInputForm.addEventListener('submit', (event) => {
-    renameQuestion(event);
-    closeModal();
-  });
-  
-  submitButton.addEventListener('click', (event) => {
-    renameQuestion(event);
-    closeModal();
-  });
-  
-  closeButton.addEventListener('click', () => {
-    closeModal();
-  });
-}
+const submitButton = document.querySelector('.submit-button');
+submitButton.addEventListener('click', (event) => {
+  renameQuestion(event);
+  closeModal();
+});
+
+const closeButton = document.querySelector('.close-button');
+closeButton.addEventListener('click', () => {
+  closeModal();
+});
 
 chatHistory.addEventListener('click', retrieveClickedQuestionIndex);
-
-attachModalEventListeners();
 
 export { displayRenameQuestionButton, openModal, closeModalOnClick };
