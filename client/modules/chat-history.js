@@ -1,6 +1,7 @@
-import { displayRenameQuestionButton, openModal, closeModalOnClick } from "./rename-question-modal.js";
+import { displayRenameQuestionButton, openModal, closeModalOnClick } from "./rename-question.js";
 
 const questionHistory = JSON.parse(localStorage.getItem('questionHistory')) || [];
+
 let clickedQuestionIndex;
 
 // This counter is attached to the 'recent-question' HTML element and incremented each time a new question is created
@@ -18,12 +19,19 @@ function createRecentQuestion(prompt) {
   chatHistory.append(recentQuestion);
 }
 
+// Retrieve the ID of the most recent question from localStorage or initialize it
+// We can then initialize the 'questionIdCounter' based on the last assigned ID
+let questionIdCounter = questionHistory.length > 0 ? questionHistory[questionHistory.length - 1].id : 0;
+
 // Add the question, answer, and assign an ID to the most recent prompt - then add it to localStorage
 function saveQuestionToHistory(questionText, answerText, languageSelection) {
+  questionIdCounter += 1;
+
   const newQuestion = {
     question: questionText,
     answer: answerText,
     language: languageSelection,
+    id: questionIdCounter,
   };
 
   questionHistory.push(newQuestion);
