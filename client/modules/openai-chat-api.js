@@ -14,13 +14,14 @@ export default async function getCompletion(message, language) {
   try {
     const response = await fetch(url, {
       method: 'POST',
+      // credentials: 'include',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4',
         messages: [
           {
             role: 'system',
