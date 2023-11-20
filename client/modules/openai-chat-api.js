@@ -3,7 +3,7 @@ import { createRecentQuestion, saveQuestionToHistory, questionHistory } from './
 import { selection } from './language-selection.js';
 
 export default async function getCompletion(message, language) {
-  const url = 'https://code-chat-backend.vercel.app/get-completion';
+  const url = 'https://code-chat-backend.vercel.app/api/get-completion';
 
   const answerBox = document.querySelector('.answer-text-box');
   const loadingMessage = displayLoadingMessage();
