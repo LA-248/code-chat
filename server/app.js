@@ -1,19 +1,19 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
+const port = process.env.PORT || 3000;
+
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: ['https://code-chat-frontend.vercel.app'],
-    methods: ['POST', 'GET'],
-  })
-);
+app.use(cors());
 
 app.get('/api/key', (req, res) => {
   const apiKey = process.env.API_KEY;
   res.json({ apiKey });
 });
 
-module.exports = app;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
