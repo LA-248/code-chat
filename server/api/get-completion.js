@@ -1,5 +1,4 @@
 require('dotenv').config();
-const fetch = require('node-fetch');
 
 const allowCors = fn => async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true)
@@ -19,6 +18,9 @@ const allowCors = fn => async (req, res) => {
 const getCompletion = async (req, res) => {
   const { message, language } = req.body;
   const url = 'https://api.openai.com/v1/chat/completions';
+
+  const fetchModule = await import('node-fetch');
+  const fetch = fetchModule.default;
 
   try {
     const openAIResponse = await fetch(url, {
