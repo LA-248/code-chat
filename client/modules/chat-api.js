@@ -5,7 +5,7 @@ import { questionInput, selection } from './language-selection.js';
 export default async function getCompletion(message, language) {
   const url = 'https://code-chat-backend.vercel.app/api/get-completion';
 
-  const answerBox = document.querySelector('.answer-text-box');
+  const answerTextBox = document.querySelector('.answer-text-box');
   const loadingMessage = displayLoadingMessage();
 
   try {
@@ -19,13 +19,14 @@ export default async function getCompletion(message, language) {
 
     const data = await response.json();
     questionInput.disabled = false;
-    questionInput.style.backgroundColor = '#FFFFFF';
+    questionInput.style.backgroundColor = '#353535';
     removeLoadingMessage(loadingMessage);
+
     const answer = data;
-    answerBox.textContent = answer;
+    answerTextBox.textContent = answer;
+    answerTextBox.style.color = 'white';
 
     const questionTextBox = document.querySelector('.question-text-box').textContent;
-
     // Save the prompt's information to localStorage
     saveQuestionToHistory(questionTextBox, answer, selection);
     // Create and append the most recent question asked to the chat history

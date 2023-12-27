@@ -6,6 +6,7 @@ function displayQuestion() {
   const questionTextBox = document.querySelector('.question-text-box');
   const input = document.getElementById('question-input').value;
   questionTextBox.textContent = `${input} | ${selection}`;
+  questionTextBox.style.color = 'white';
 }
 
 // Function that displays the answer returned by the OpenAI API in the appropriate text box
@@ -16,7 +17,7 @@ function displayAnswer(event) {
 
   questionInput.disabled = true;
   if (questionInput.disabled === true) {
-    questionInput.style.backgroundColor = '#f8f8f8';
+    questionInput.style.backgroundColor = '#353535';
   }
 
   // Call the function that sends an API request to OpenAI's chat completion endpoint and displays the answer in the chat window

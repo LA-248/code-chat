@@ -6,13 +6,14 @@ function setLanguageSelection(event) {
   selection = event.target.value;
   if (selection === 'Select') {
     questionInput.disabled = true;
-    questionInput.style.backgroundColor = '#f8f8f8';
+    questionInput.style.backgroundColor = '#353535';
     questionInput.placeholder = 'Please select a programming language';
   } else {
     questionInput.disabled = false;
-    questionInput.style.backgroundColor = 'white';
+    questionInput.style.backgroundColor = '#292828';
     questionInput.placeholder = `Ask any question about using ${selection}`;
   }
+
   console.log(selection);
 }
 

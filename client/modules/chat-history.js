@@ -19,6 +19,7 @@ function createRecentQuestion(prompt) {
 
   recentQuestion.className = 'recent-question';
   recentQuestion.style.fontSize = '14px';
+  recentQuestion.style.color = 'white';
   recentQuestion.textContent = `${prompt.question}`;
   recentQuestion.setAttribute('id', (recentQuestionIdCounter += 1));
   chatHistory.append(recentQuestion);

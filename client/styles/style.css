@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: #fff0e5;
+  background-color: #292828;
 }
 
 .main-container {
@@ -28,10 +28,11 @@ body {
 .main-heading {
   font-size: 26px;
   font-weight: 600;
+  color: white;
 }
 
 .main-heading-subtext {
-  color: black;
+  color: white;
   text-align: center;
   font-size: 16px;
   font-weight: 400;
@@ -39,7 +40,7 @@ body {
 }
 
 .subtext {
-  color: black;
+  color: white;
   text-align: center;
   font-size: 14px;
   font-weight: 400;
@@ -72,11 +73,12 @@ hr.divider {
   align-items: center;
   width: 180px;
   height: 45px;
-  background-color: white;
-  border: 1px solid rgb(189, 189, 189);
+  background-color: #292828;
+  border: 1px solid rgb(99, 99, 99);
   border-radius: 25px;
   padding: 10px 16px;
   font-size: 14px;
+  color: white;
 }
 
 .language-selection-buttons {
@@ -91,11 +93,12 @@ hr.divider {
   align-items: center;
   width: 145px;
   height: 40px;
-  background-color: white;
-  border: 1px solid rgb(189, 189, 189);
+  background-color: #292828;
+  border: 1px solid rgb(99, 99, 99);
   border-radius: 25px;
   padding: 12px 16px;
   font-size: 14px;
+  color: white;
 }
 
 .language-button:hover {
@@ -121,8 +124,8 @@ hr.divider {
   align-items: flex-start;
   width: 20%;
   height: 100%;
-  background-color: #f7f7f8;
-  border: 1px solid gainsboro;
+  background-color: #3d3d3d;
+  border: 1px solid rgb(99, 99, 99);
   border-radius: 25px;
   padding: 24px 20px;
   gap: 20px;
@@ -140,16 +143,18 @@ hr.divider {
   align-items: center;
   width: 233px;
   height: 40px;
-  background-color: white;
-  border: 1px solid rgb(189, 189, 189);
+  background-color: #36bffa;
+  border: none;
   border-radius: 25px;
   padding: 10px 16px;
   font-size: 14px;
+  font-weight: 600;
+  color: white;
 }
 
 .new-chat-button:hover {
   cursor: pointer;
-  background-color: rgb(255, 249, 249);
+  background-color: #4cc8fd;
 }
 
 .chat-history-heading {
@@ -157,6 +162,7 @@ hr.divider {
   font-weight: 500;
   text-align: left;
   text-decoration: underline;
+  color: white;
 }
 
 .recent-question:hover {
@@ -170,8 +176,8 @@ hr.divider {
   justify-content: space-between;
   width: 75vw;
   height: 90vh;
-  background-color: #f7f7f8;
-  border: 1px solid gainsboro;
+  background-color: #3d3d3d;
+  border: 1px solid rgb(99, 99, 99);
   border-radius: 25px;
   padding: 24px 30px;
   gap: 10px;
@@ -197,8 +203,8 @@ hr.divider {
   border-radius: 20px;
   width: 100px;
   height: 30px;
-  background-color: red;
-  color: white;
+  background-color: gainsboro;
+  color: black;
   border: none;
   font-weight: 500;
   margin: 0;
@@ -215,8 +221,8 @@ hr.divider {
   border-radius: 20px;
   width: 100px;
   height: 30px;
-  background-color: gainsboro;
-  color: black;
+  background-color: #36bffa;
+  color: white;
   border: none;
   font-weight: 500;
   margin: 0;
@@ -224,7 +230,7 @@ hr.divider {
 
 .rename-button:hover {
   cursor: pointer;
-  background-color: rgb(214, 214, 214);
+  background-color: #4cc8fd;
 }
 
 dialog {
@@ -232,7 +238,7 @@ dialog {
   scale: 0;
   display: block;
   transition: 0.5s all;
-  background-color: white;
+  background-color: #3d3d3d;
   border-radius: 15px;
   padding: 30px;
 }
@@ -246,6 +252,7 @@ dialog[open] {
 .about-heading {
   font-weight: 400;
   margin-bottom: 10px;
+  color: white;
 }
 
 #rename-input {
@@ -255,15 +262,15 @@ dialog[open] {
   border-radius: 25px;
   width: 35vw;
   height: 35px;
-  background-color: white;
-  color: black;
-  border: 1px solid rgb(189, 189, 189);
+  background-color: #292828;
+  color: white;
+  border: 1px solid rgb(99, 99, 99);
   font-size: 14px;
   font-weight: 400;
 }
 
 #rename-question-input:focus {
-  border: 2px solid #36bffa;
+  border: 2px solid white;
 }
 
 .rename-modal-buttons {
@@ -296,7 +303,7 @@ dialog[open] {
   border-radius: 20px;
   width: 17vw;
   height: 35px;
-  background-color: rgb(0, 174, 255);
+  background-color: #36bffa;
   color: white;
   border: none;
   font-weight: 500;
@@ -305,7 +312,7 @@ dialog[open] {
 
 .submit-button:hover {
   cursor: pointer;
-  background-color: rgb(20, 181, 255);
+  background-color: #4cc8fd;
 }
 
 .input-and-dropdown {
@@ -321,9 +328,9 @@ dialog[open] {
   border-radius: 25px;
   width: 52vw;
   height: 45px;
-  background-color: white;
-  color: black;
-  border: 1px solid rgb(189, 189, 189);
+  background-color: #292828;
+  border: 1px solid rgb(99, 99, 99);
+  color: white;
   font-size: 14px;
   font-weight: 400;
 }
