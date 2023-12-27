@@ -19,6 +19,7 @@ export default async function getCompletion(message, language) {
 
     const data = await response.json();
     questionInput.disabled = false;
+    questionInput.style.backgroundColor = '#FFFFFF';
     removeLoadingMessage(loadingMessage);
     const answer = data.choices[0].message.content;
     answerBox.textContent = answer;
