@@ -17,20 +17,20 @@ const allowCors = fn => async (req, res) => {
 
 const getCompletion = async (req, res) => {
   const { message, language } = req.body;
-  const url = 'https://api.openai.com/v1/chat/completions';
+  const url = 'https://api.perplexity.ai/chat/completions';
 
   const fetchModule = await import('node-fetch');
   const fetch = fetchModule.default;
 
   try {
-    const openAIResponse = await fetch(url, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${process.env.API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'mixtral-8x7b-instruct',
         messages: [
           {
             role: 'system',
@@ -41,7 +41,7 @@ const getCompletion = async (req, res) => {
       }),
     });
 
-    const data = await openAIResponse.json();
+    const data = await response.json();
     res.status(200).json(data);
   } catch (error) {
     console.error('Error:', error);
