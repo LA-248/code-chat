@@ -1,6 +1,6 @@
 import { displayLoadingMessage, removeLoadingMessage } from './loading-message.js';
 import { createRecentQuestion, saveQuestionToHistory, questionHistory } from './chat-history.js';
-import { selection } from './language-selection.js';
+import { questionInput, selection } from './language-selection.js';
 
 export default async function getCompletion(message, language) {
   const url = 'https://code-chat-backend.vercel.app/api/get-completion';
@@ -18,6 +18,7 @@ export default async function getCompletion(message, language) {
     });
 
     const data = await response.json();
+    questionInput.disabled = false;
     removeLoadingMessage(loadingMessage);
     const answer = data.choices[0].message.content;
     answerBox.textContent = answer;
