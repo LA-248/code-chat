@@ -212,7 +212,7 @@ hr.divider {
 
 .delete-button:hover {
   cursor: pointer;
-  background-color: rgb(255, 47, 47);
+  background-color: rgb(233, 233, 233);
 }
 
 .rename-button {
@@ -353,6 +353,7 @@ dialog[open] {
 .question-text-box {
   font-size: 18px;
   font-weight: 500;
+  color: white
 }
 
 .answer-text-box {
@@ -361,4 +362,5 @@ dialog[open] {
   max-width: 600px;
   overflow-wrap: break-word;
   white-space: pre-wrap;
+  color: white;
 }

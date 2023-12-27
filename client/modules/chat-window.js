@@ -9,7 +9,7 @@ function displayQuestion() {
   questionTextBox.style.color = 'white';
 }
 
-// Function that displays the answer returned by the OpenAI API in the appropriate text box
+// Function that displays the answer returned by the Perplexity's API in the appropriate text box
 function displayAnswer(event) {
   // Prevent the page from automatically refreshing on form submission
   event.preventDefault();
@@ -20,7 +20,7 @@ function displayAnswer(event) {
     questionInput.style.backgroundColor = '#353535';
   }
 
-  // Call the function that sends an API request to OpenAI's chat completion endpoint and displays the answer in the chat window
+  // Call the function that sends an API request to Perplexity's chat completion endpoint and displays the answer in the chat window
   getCompletion(input, selection);
 }
 

@@ -24,7 +24,6 @@ export default async function getCompletion(message, language) {
 
     const answer = data;
     answerTextBox.textContent = answer;
-    answerTextBox.style.color = 'white';
 
     const questionTextBox = document.querySelector('.question-text-box').textContent;
     // Save the prompt's information to localStorage
