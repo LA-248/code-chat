@@ -1,4 +1,4 @@
-import getCompletion from './openai-chat-api.js';
+import getCompletion from './chat-api.js';
 import { questionInput, selection } from './language-selection.js';
 
 // Display the question asked by the user in the chat window
