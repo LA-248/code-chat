@@ -1,6 +1,11 @@
-import { displayRenameQuestionButton, openModal, closeModalOnClick } from "./rename-question.js";
+import {
+  displayRenameQuestionButton,
+  openModal,
+  closeModalOnClick,
+} from './rename-question.js';
 
-const questionHistory = JSON.parse(localStorage.getItem('questionHistory')) || [];
+const questionHistory =
+  JSON.parse(localStorage.getItem('questionHistory')) || [];
 
 let clickedQuestionIndex;
 
@@ -21,7 +26,10 @@ function createRecentQuestion(prompt) {
 
 // Retrieve the ID of the most recent question from localStorage or initialize it
 // We can then initialize the 'questionIdCounter' based on the last assigned ID
-let questionIdCounter = questionHistory.length > 0 ? questionHistory[questionHistory.length - 1].id : 0;
+let questionIdCounter =
+  questionHistory.length > 0
+    ? questionHistory[questionHistory.length - 1].id
+    : 0;
 
 // Add the question, answer, and assign an ID to the most recent prompt - then add it to localStorage
 function saveQuestionToHistory(questionText, answerText, languageSelection) {
@@ -53,10 +61,10 @@ function removeMainHeading() {
   return function () {
     const heading = document.querySelector('.heading-text-wrapper');
     if (isHeadingRemoved === false) {
-      heading.remove();;
+      heading.remove();
       isHeadingRemoved = true;
     }
-  }
+  };
 }
 
 const removeHeading = removeMainHeading();
@@ -66,7 +74,7 @@ function retrieveIndicesOfRecentQuestions() {
   const allRecentQuestions = document.querySelectorAll('.recent-question');
   const allRecentQuestionsArray = Array.from(allRecentQuestions);
   const indices = [];
-  
+
   allRecentQuestionsArray.forEach((element, index) => indices.push(index));
 
   // Return the array so it can be used in the function below
@@ -89,7 +97,10 @@ function displayClickedPromptInChatWindow(event) {
     clickedQuestionIndex = clickedQuestionId - 1;
 
     // Check if the calculated clickedQuestionIndex is within the valid range
-    if (clickedQuestionIndex >= 0 && clickedQuestionIndex < questionIndices.length) {
+    if (
+      clickedQuestionIndex >= 0 &&
+      clickedQuestionIndex < questionIndices.length
+    ) {
       const clickedQuestion = questionIndices[clickedQuestionIndex];
       questionTextBox.textContent = `${questionHistory[clickedQuestion].question}`;
       answerBox.textContent = questionHistory[clickedQuestion].answer;
@@ -127,9 +138,13 @@ function removeQuestionFromChatHistory() {
   const recentQuestionsArray = Array.from(recentQuestions);
 
   // Find the question in localStorage which matches the current question being displayed
-  const deleteFromLocalStorage = questionHistory.find(element => element.question === questionName.textContent);
+  const deleteFromLocalStorage = questionHistory.find(
+    (element) => element.question === questionName.textContent
+  );
   // Find the question in the chat history that matches the current question being displayed
-  const questionToDelete = recentQuestionsArray.find(question => question.textContent === questionName.textContent);
+  const questionToDelete = recentQuestionsArray.find(
+    (question) => question.textContent === questionName.textContent
+  );
 
   // If there is a match, delete it from localStorage
   // The clickedQuestionIndex is retrieved from the 'displayClickedPromptInChatWindow' function - which is called when a user clicks on a question in the chat history
@@ -145,7 +160,7 @@ function removeQuestionFromChatHistory() {
   // Clear the contents of the chat window after the question has been deleted
   questionName.textContent = '';
   answer.textContent = '';
-  
+
   localStorage.setItem('questionHistory', JSON.stringify(questionHistory));
 }
 
@@ -182,4 +197,9 @@ addClickListenerToRecentQuestions();
 // When the user clicks anywhere outside of the modal, close it
 window.addEventListener('click', closeModalOnClick);
 
-export { createRecentQuestion, saveQuestionToHistory, questionHistory, removeHeading };
+export {
+  createRecentQuestion,
+  saveQuestionToHistory,
+  questionHistory,
+  removeHeading,
+};
