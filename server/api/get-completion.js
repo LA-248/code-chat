@@ -42,7 +42,7 @@ const getCompletion = async (req, res) => {
     });
 
     const data = await response.json();
-    res.status(200).json(data);
+    res.status(200).json(data.choices[0].message.content);
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: error.message });
