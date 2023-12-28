@@ -5,6 +5,7 @@
 
 body {
   background-color: #292828;
+  overflow: hidden;
 }
 
 .main-container {
@@ -65,6 +66,20 @@ hr.divider {
   justify-content: center;
   align-items: center;
   gap: 25px;
+}
+
+#model-dropdown-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 45px;
+  background-color: #292828;
+  border: 1px solid rgb(99, 99, 99);
+  border-radius: 25px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: white;
 }
 
 #dropdown-menu {
@@ -174,6 +189,7 @@ hr.divider {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   width: 75vw;
   height: 90vh;
   background-color: #3d3d3d;
@@ -317,7 +333,6 @@ dialog[open] {
 
 .input-and-dropdown {
   display: flex;
-  justify-content: space-between;
   gap: 15px;
 }
 
@@ -326,7 +341,7 @@ dialog[open] {
   padding: 16px;
   margin: 0px;
   border-radius: 25px;
-  width: 52vw;
+  width: 40vw;
   height: 45px;
   background-color: #292828;
   border: 1px solid rgb(99, 99, 99);

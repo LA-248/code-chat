@@ -1,20 +1,20 @@
-let selection;
+let languageSelection;
 const questionInput = document.getElementById('question-input');
 
 // Set the programming language selected by the user
 function setLanguageSelection(event) {
-  selection = event.target.value;
-  if (selection === 'Select') {
+  languageSelection = event.target.value;
+  if (languageSelection === 'Select') {
     questionInput.disabled = true;
     questionInput.style.backgroundColor = '#353535';
     questionInput.placeholder = 'Please select a programming language';
   } else {
     questionInput.disabled = false;
     questionInput.style.backgroundColor = '#292828';
-    questionInput.placeholder = `Ask any question about using ${selection}`;
+    questionInput.placeholder = `Ask any question about using ${languageSelection}`;
   }
 
-  console.log(selection);
+  console.log(languageSelection);
 }
 
 // Set up the event listener for the language selection dropdown menu -
@@ -29,4 +29,4 @@ function setSelectedLanguage() {
 
 setSelectedLanguage();
 
-export { selection, questionInput };
+export { languageSelection, questionInput };

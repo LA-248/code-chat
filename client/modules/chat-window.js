@@ -1,11 +1,12 @@
 import getCompletion from './chat-api.js';
-import { questionInput, selection } from './language-selection.js';
+import { questionInput, languageSelection } from './language-selection.js';
+import { model } from './model-selection.js';
 
 // Display the question asked by the user in the chat window
 function displayQuestion() {
   const questionTextBox = document.querySelector('.question-text-box');
   const input = document.getElementById('question-input').value;
-  questionTextBox.textContent = `${input} | ${selection}`;
+  questionTextBox.textContent = `${input} | ${languageSelection}`;
   questionTextBox.style.color = 'white';
 }
 
@@ -21,7 +22,7 @@ function displayAnswer(event) {
   }
 
   // Call the function that sends an API request to Perplexity's chat completion endpoint and displays the answer in the chat window
-  getCompletion(input, selection);
+  getCompletion(input, languageSelection, model);
 }
 
 function createNewChat() {

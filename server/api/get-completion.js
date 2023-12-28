@@ -16,7 +16,7 @@ const allowCors = fn => async (req, res) => {
 }
 
 const getCompletion = async (req, res) => {
-  const { message, language } = req.body;
+  const { message, language, model } = req.body;
   const url = 'https://api.perplexity.ai/chat/completions';
 
   const fetchModule = await import('node-fetch');
@@ -30,7 +30,7 @@ const getCompletion = async (req, res) => {
         Authorization: `Bearer ${process.env.API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'mixtral-8x7b-instruct',
+        model: `${model}`,
         messages: [
           {
             role: 'system',
