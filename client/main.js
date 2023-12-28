@@ -1,6 +1,7 @@
 import { questionInput } from './modules/language-selection.js';
 import { displayQuestion, displayAnswer } from './modules/chat-window.js';
 import { removeHeading } from './modules/chat-history.js';
+import { model } from './modules/model-selection.js';
 
 const questionInputForm = document.getElementById('question-input-form');
 
@@ -22,4 +23,8 @@ window.onload = () => {
     questionInput.style.backgroundColor = '#353535';
     questionInput.placeholder = 'Please select a programming language';
   }
+
+  // Set a model by default on window load
+  let model = 'pplx-7b-chat';
+  console.log(model);
 };
