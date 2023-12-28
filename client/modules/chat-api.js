@@ -19,7 +19,7 @@ export default async function getCompletion(message, language, model) {
 
     const data = await response.json();
     questionInput.disabled = false;
-    questionInput.style.backgroundColor = '#353535';
+    questionInput.style.backgroundColor = '#292828';
     removeLoadingMessage(loadingMessage);
 
     const answer = data;
