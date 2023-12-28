@@ -23,8 +23,4 @@ window.onload = () => {
     questionInput.style.backgroundColor = '#353535';
     questionInput.placeholder = 'Please select a programming language';
   }
-
-  // Set a model by default on window load
-  let model = 'pplx-7b-chat';
-  console.log(model);
 };
