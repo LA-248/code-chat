@@ -18,7 +18,3 @@ It's powered by GPT-4, leveraging OpenAI's cutting-edge language model to provid
 - GPT-4 Integration: Utilises OpenAI's GPT-4 for high-quality, contextually relevant answers.
 - Chat History: Interactions are stored and displayed. This includes both the questions asked by the user and the responses provided by the chatbot.
 - Real-Time Responses: Fast response time, providing near immediate feedback.
-
-## Usage
-
-This project is hosted on Vercel. To use Code Chat, click [here](https://code-chat-site.vercel.app/).
